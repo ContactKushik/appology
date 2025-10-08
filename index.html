@@ -439,6 +439,9 @@
         const startButton = document.getElementById('startButton');
         const words = ['Oops!', 'Sorry!', 'My Bad!', 'Forgive Me!'];
 
+        // Set volume to 40% (0.4)
+        bgMusic.volume = 0.4;
+
         // Function to start music and animations
         function startExperience() {
             // Try to play music with promise handling
@@ -447,13 +450,14 @@
             if (playPromise !== undefined) {
                 playPromise
                     .then(() => {
-                        console.log('Music started successfully');
+                        console.log('Music started successfully at 40% volume');
                     })
                     .catch(err => {
                         console.log('Music playback failed:', err);
                         // Try loading and playing again
                         bgMusic.load();
                         setTimeout(() => {
+                            bgMusic.volume = 0.4; // Ensure volume is set again after reload
                             bgMusic.play().catch(e => console.log('Retry failed:', e));
                         }, 100);
                     });
