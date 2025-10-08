@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hey Anushka — I'm Truly Sorry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg1: #ffe4e6;
+            --bg2: #ffccd5;
+            --accent: #ec4899;
+            --text: #581c87;
+            --star: #ec4899;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 1.5rem 1.25rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 90%;
+            width: 100%;
+            margin: 15px;
+            animation: fadeInUp 1.5s ease forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            .container {
+                border-radius: 28px;
+                padding: 2.5rem 2rem;
+                max-width: 520px;
+                margin: 20px;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            .container {
+                border-radius: 32px;
+                padding: 3rem 2.5rem;
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            text-shadow: 2px 2px 5px rgba(236, 72, 153, 0.3);
+            animation: pop 1s ease;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0.75rem 0;
+            animation: fadeText 2s ease;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            p {
+                font-size: 0.95rem;
+                line-height: 1.65;
+                margin: 0.85rem 0;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin: 1rem 0;
+            }
+        }
+
+        @keyframes fadeText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 18px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3);
+            margin-top: 0.75rem;
+            animation: popButton 2s ease infinite;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            button {
+                padding: 0.85rem 1.75rem;
+                border-radius: 19px;
+                font-size: 0.95rem;
+                margin-top: 0.85rem;
+                width: auto;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            button {
+                padding: 0.9rem 2rem;
+                border-radius: 20px;
+                font-size: 1rem;
+                margin-top: 1rem;
+            }
+        }
+
+        button:hover {
+            background: #db2777;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.5);
+        }
+
+        button:active {
+            transform: translateY(0) scale(1);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        @keyframes popButton {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Tablet and up - reduce animation intensity */
+        @media (min-width: 768px) {
+            @keyframes popButton {
+
+                0%,
+                100% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.08);
+                }
+            }
+        }
+
+        .star,
+        .word {
+            position: absolute;
+            font-size: 12px;
+            color: var(--star);
+            opacity: 0.7;
+            animation: floatUpSubtle linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+
+            .star,
+            .word {
+                font-size: 14px;
+            }
+
+            .star {
+                font-size: 16px;
+            }
+        }
+
+        @keyframes floatUpSubtle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.7;
+            }
+
+            90% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .start-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--bg1), var(--bg2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            cursor: pointer;
+            padding: 20px;
+        }
+
+        .start-overlay.hidden {
+            display: none;
+        }
+
+        .start-text {
+            font-family: 'Pacifico', cursive;
+            color: var(--accent);
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 5px rgba(236, 72, 153, 0.3);
+            animation: pulse 2s ease infinite;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            .start-text {
+                font-size: 1.75rem;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            .start-text {
+                font-size: 2rem;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        #thankYouMsg {
+            font-size: 0.95rem;
+            color: var(--accent);
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            #thankYouMsg {
+                font-size: 1.05rem;
+                margin-top: 1.25rem;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            #thankYouMsg {
+                font-size: 1.1rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        /* Small text adjustments */
+        .apology-text {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            .apology-text {
+                font-size: 0.875rem;
+                margin-top: 1.25rem;
+            }
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            .apology-text {
+                font-size: 0.9rem;
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Start Overlay -->
+    <div class="start-overlay" id="startOverlay">
+        <div class="start-text">Please Click/Touch Here</div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="./bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>Truly Sorry Anushka🥹,</h1>
+        <p>
+            I just wanted to say I'm genuinely sorry. I know I made a mistake, and it hurt you — something you didn't
+            deserve.
+            I truly regret letting this happen.
+        </p>
+        <p>
+            
+        </p>
+         <p class="apology-text">
+        😭😭
+        </p>
+        <button id="acceptBtn">Please Accept My Apology</button>
+        <p id="thankYouMsg" style="display: none;">
+            Thank you so much, Anushka! Your forgiveness means the world to me. 💙
+        </p>
+    </div>
+
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const acceptBtn = document.getElementById('acceptBtn');
+        const startOverlay = document.getElementById('startOverlay');
+        const words = ['Oops!', 'Sorry!', 'My Bad!', 'Forgive Me!'];
+
+        // Handle click/touch to start
+        startOverlay.addEventListener('click', function () {
+            // Start music
+            bgMusic.play().catch(err => {
+                console.log('Music playback failed:', err);
+            });
+
+            // Hide overlay
+            startOverlay.classList.add('hidden');
+
+            // Start animations
+            initAnimations();
+        });
+
+        // Also handle touch events for mobile
+        startOverlay.addEventListener('touchstart', function (e) {
+            e.preventDefault();
+            // Start music
+            bgMusic.play().catch(err => {
+                console.log('Music playback failed:', err);
+            });
+
+            // Hide overlay
+            startOverlay.classList.add('hidden');
+
+            // Start animations
+            initAnimations();
+        }, { passive: false });
+
+        // Background animation - create elements across entire screen
+        function createFloatingElement() {
+            const elementType = Math.random() < 0.6 ? 'star' : 'word';
+            const elem = document.createElement('div');
+            elem.className = elementType;
+
+            if (elementType === 'word') {
+                elem.textContent = words[Math.floor(Math.random() * words.length)];
+            } else {
+                elem.textContent = '★';
+            }
+
+            const x = Math.random() * window.innerWidth;
+            elem.style.left = x + 'px';
+            elem.style.top = window.innerHeight + 20 + 'px';
+            elem.style.animationDuration = (5 + Math.random() * 2) + 's';
+
+            document.body.appendChild(elem);
+            setTimeout(() => elem.remove(), 8000);
+        }
+
+        function initAnimations() {
+            // Adjust number of elements based on screen size
+            const isMobile = window.innerWidth < 768;
+            const elementCount = isMobile ? 10 : 15;
+            const interval = isMobile ? 350 : 250;
+
+            // Create multiple elements initially
+            for (let i = 0; i < elementCount; i++) {
+                setTimeout(() => createFloatingElement(), i * 200);
+            }
+
+            // Continue creating elements
+            setInterval(createFloatingElement, interval);
+        }
+
+        // Handle accept button click
+        acceptBtn.addEventListener('click', () => {
+            acceptBtn.style.display = 'none';
+            document.getElementById('thankYouMsg').style.display = 'block';
+        });
+
+        // Prevent double-tap zoom on buttons (iOS)
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchend', function (e) {
+                e.preventDefault();
+                this.click();
+            }, { passive: false });
+        });
+    </script>
+</body>
+
+</html>
