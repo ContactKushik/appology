@@ -293,7 +293,6 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            cursor: pointer;
             padding: 20px;
         }
 
@@ -301,28 +300,47 @@
             display: none;
         }
 
-        .start-text {
+        .start-button {
             font-family: 'Pacifico', cursive;
-            color: var(--accent);
+            color: white;
+            background: var(--accent);
             font-size: 1.5rem;
             text-shadow: 2px 2px 5px rgba(236, 72, 153, 0.3);
             animation: pulse 2s ease infinite;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
+            transition: 0.3s ease;
         }
 
         /* Tablet and up */
         @media (min-width: 768px) {
-            .start-text {
+            .start-button {
                 font-size: 1.75rem;
+                padding: 1.4rem 3rem;
             }
         }
 
         /* Desktop and up */
         @media (min-width: 1024px) {
-            .start-text {
+            .start-button {
                 font-size: 2rem;
+                padding: 1.5rem 3.5rem;
             }
+        }
+
+        .start-button:hover {
+            background: #db2777;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(236, 72, 153, 0.6);
+        }
+
+        .start-button:active {
+            transform: translateY(-1px) scale(1.02);
         }
 
         @keyframes pulse {
@@ -333,7 +351,7 @@
             }
 
             50% {
-                transform: scale(1.1);
+                transform: scale(1.08);
             }
         }
 
@@ -388,10 +406,10 @@
 <body>
     <!-- Start Overlay -->
     <div class="start-overlay" id="startOverlay">
-        <div class="start-text">Please Click/Touch Here</div>
+        <button class="start-button" id="startButton">Please Click/Touch Here</button>
     </div>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto">
         <source src="./bg-music.mp3" type="audio/mpeg">
     </audio>
 
@@ -403,14 +421,14 @@
             I truly regret letting this happen.
         </p>
         <p>
-            
+
         </p>
-         <p class="apology-text">
-        😭😭
+        <p class="apology-text">
+            😭😭
         </p>
         <button id="acceptBtn">Please Accept My Apology</button>
         <p id="thankYouMsg" style="display: none;">
-            Thank you so much, Anushka! Your forgiveness means the world to me. 💙
+            Thank you so much, Anushka! 💙
         </p>
     </div>
 
@@ -418,35 +436,48 @@
         const bgMusic = document.getElementById('bgMusic');
         const acceptBtn = document.getElementById('acceptBtn');
         const startOverlay = document.getElementById('startOverlay');
+        const startButton = document.getElementById('startButton');
         const words = ['Oops!', 'Sorry!', 'My Bad!', 'Forgive Me!'];
 
-        // Handle click/touch to start
-        startOverlay.addEventListener('click', function () {
-            // Start music
-            bgMusic.play().catch(err => {
-                console.log('Music playback failed:', err);
-            });
+        // Function to start music and animations
+        function startExperience() {
+            // Try to play music with promise handling
+            const playPromise = bgMusic.play();
+
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        console.log('Music started successfully');
+                    })
+                    .catch(err => {
+                        console.log('Music playback failed:', err);
+                        // Try loading and playing again
+                        bgMusic.load();
+                        setTimeout(() => {
+                            bgMusic.play().catch(e => console.log('Retry failed:', e));
+                        }, 100);
+                    });
+            }
 
             // Hide overlay
             startOverlay.classList.add('hidden');
 
             // Start animations
             initAnimations();
+        }
+
+        // Handle button click
+        startButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            startExperience();
         });
 
-        // Also handle touch events for mobile
-        startOverlay.addEventListener('touchstart', function (e) {
+        // Also handle touch events for mobile - attached to button
+        startButton.addEventListener('touchend', function (e) {
             e.preventDefault();
-            // Start music
-            bgMusic.play().catch(err => {
-                console.log('Music playback failed:', err);
-            });
-
-            // Hide overlay
-            startOverlay.classList.add('hidden');
-
-            // Start animations
-            initAnimations();
+            e.stopPropagation();
+            startExperience();
         }, { passive: false });
 
         // Background animation - create elements across entire screen
@@ -492,12 +523,10 @@
         });
 
         // Prevent double-tap zoom on buttons (iOS)
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('touchend', function (e) {
-                e.preventDefault();
-                this.click();
-            }, { passive: false });
-        });
+        acceptBtn.addEventListener('touchend', function (e) {
+            e.preventDefault();
+            this.click();
+        }, { passive: false });
     </script>
 </body>
 
